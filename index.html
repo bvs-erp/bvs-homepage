@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BVS — Build. Verify. Support. | 주식회사 비브이에스</title>
+<meta name="description" content="반도체 FAB 설비의 제작·이설·셋업·유지보수를 한 팀이 책임집니다. 주식회사 비브이에스(BVS), 경기도 이천.">
+<meta property="og:title" content="BVS — Build. Verify. Support.">
+<meta property="og:description" content="제작부터 이설, 셋업, 유지보수까지 반도체 FAB 설비의 전 과정을 한 팀이 책임집니다.">
+<meta property="og:image" content="https://bvs.kr/img/hq.jpg">
+<meta name="theme-color" content="#0B1B33">
+<meta property="og:url" content="https://bvs.kr/">
+<link rel="canonical" href="https://bvs.kr/">
+<link rel="icon" type="image/svg+xml" href="img/bvs_symbol.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0B1B33;--deep:#050B18;--blue:#1F5FD1;--sky:#9CC3FF;--steel:#4B5563;--ink:#111827;--mist:#F6F7F9;--line:#DCE2EA;--en:'Poppins',Arial,sans-serif;--kr:'Noto Sans KR','Malgun Gothic',sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;word-break:keep-all;font-family:var(--kr);color:var(--ink);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1280px,100% - 48px);margin:0 auto}
+.eyebrow{font-family:var(--en);font-size:13px;font-weight:600;letter-spacing:.16em;color:var(--blue);text-transform:uppercase}
+.dark .eyebrow,.card .eyebrow,.proj .eyebrow{color:var(--sky)}
+h1,h2,h3{margin:0;line-height:1.3}
+.sec{padding:120px 0}
+.sec-head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px;margin-bottom:64px}
+.sec-head h2{font-size:clamp(28px,3.4vw,40px);font-weight:700}
+.sec-head .bar{width:40px;height:2px;background:currentColor}
+.sec-head p{margin:0;color:var(--steel);font-size:17px}
+.dark{background:var(--navy);color:#fff}
+.dark .sec-head p{color:#C9D6EC}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 28px;font-size:15px;font-weight:500;border:1px solid currentColor;transition:background .2s,color .2s}
+.btn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.dark .btn:hover{background:#fff;color:var(--navy);border-color:#fff}
+
+/* header */
+.hd{position:fixed;inset:0 0 auto 0;z-index:50;height:84px;display:flex;align-items:center;transition:background .25s,box-shadow .25s}
+.hd.solid{background:rgba(5,11,24,.92);backdrop-filter:blur(8px);box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.hd .wrap{display:flex;align-items:center;justify-content:space-between}
+.logo{display:inline-flex;align-items:center}
+.logo img{display:block}
+.nav{display:flex;gap:48px;font-family:var(--en);font-size:14px;font-weight:600;letter-spacing:.06em;color:#fff}
+.nav a{padding:8px 0;border-bottom:2px solid transparent}
+.nav a:hover{color:var(--sky);border-color:var(--sky)}
+.menu-btn{display:none;width:44px;height:44px;background:none;border:0;color:#fff;cursor:pointer;align-items:center;justify-content:center}
+
+/* hero */
+.hero{position:relative;height:100vh;min-height:640px;max-height:980px;background:var(--deep);color:#fff;overflow:hidden;display:flex;align-items:center}
+.hero svg.bg{position:absolute;inset:0;width:100%;height:100%}
+.hero .copy{position:relative;width:100%;text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px;padding:0 24px;margin-top:-12vh}
+.hero .copy .eyebrow{letter-spacing:.3em}
+.hero h1{font-family:var(--en);font-weight:700;font-size:clamp(44px,7vw,92px);line-height:1.05;letter-spacing:-.01em}
+.hero p{margin:0;font-size:clamp(15px,1.6vw,20px);color:#C9D6EC}
+.scroll{position:absolute;right:48px;bottom:48px;display:flex;flex-direction:column;align-items:center;gap:12px;font-family:var(--en);font-size:11px;letter-spacing:.2em;color:#9FB0CC}
+.scroll span:first-child{writing-mode:vertical-rl}
+.scroll span:last-child{width:1px;height:48px;background:#9FB0CC}
+
+/* about */
+.about{display:grid;grid-template-columns:7fr 5fr;gap:64px;align-items:center}
+.about figure{margin:0;position:relative}
+.about figure img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.about figcaption{position:absolute;left:0;bottom:0;padding:14px 20px;background:rgba(11,27,51,.85);color:#fff;font-size:14px}
+.about h2{font-size:clamp(26px,2.6vw,34px);margin:18px 0 22px}
+.about p{margin:0 0 28px;color:var(--steel);font-size:17px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);margin-top:96px;position:relative}
+.flow:before{content:"";position:absolute;left:12.5%;right:12.5%;top:44px;height:1px;background:#C7D2E3}
+.flow div{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px}
+.flow b{width:88px;height:88px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--en);font-size:22px;font-weight:600;margin-bottom:8px}
+.flow div:last-child b{background:var(--blue)}
+.flow em{font-style:normal;font-family:var(--en);font-size:13px;font-weight:600;letter-spacing:.14em;color:var(--blue)}
+.flow strong{font-size:19px}
+.flow span{font-size:15px;color:var(--steel)}
+
+/* business */
+.biz{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.card{position:relative;min-height:440px;overflow:hidden;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:44px;background:var(--navy)}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.card:hover img{transform:scale(1.04)}
+.card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,11,24,.15) 0%,rgba(5,11,24,.88) 100%)}
+.card>*:not(img){position:relative;z-index:1}
+.card .ic{position:absolute;right:40px;top:40px;z-index:1;opacity:.9}
+.card h3{font-size:30px;margin:10px 0 12px}
+.card p{margin:0;color:#D5DEEC;font-size:16px;max-width:520px}
+.card ul{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.card li{font-size:13px;padding:5px 12px;border:1px solid rgba(255,255,255,.35)}
+.c2{background:#243F66}.c3{background:#16304F}
+
+/* figures */
+.figs{display:grid;grid-template-columns:repeat(4,1fr)}
+.figs div{padding:0 32px;border-left:1px solid #22385C;display:flex;flex-direction:column;gap:10px}
+.figs div:first-child{border-left:0;padding-left:0}
+.figs b{font-family:var(--en);font-size:clamp(34px,3.6vw,52px);font-weight:600;line-height:1.1}
+.figs b i{font-style:normal;color:var(--sky);font-size:.55em}
+.figs span{color:#B8C5DB;font-size:15px}
+
+/* products */
+.prod{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.prod>div{border-top:2px solid var(--navy);padding-top:28px}
+.prod h3{font-size:22px;margin-bottom:6px}
+.prod p{margin:0 0 20px;color:var(--steel)}
+.tags{display:flex;flex-wrap:wrap;gap:10px}
+.tags span{padding:10px 18px;background:var(--mist);font-weight:500}
+
+/* projects */
+.proj{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.proj article{min-height:360px;background:var(--navy);color:#fff;padding:36px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;position:relative;overflow:hidden}
+.proj article:nth-child(2){background:#243F66}.proj article:nth-child(3){background:#16304F}
+.proj article svg{position:absolute;right:-30px;top:-30px;opacity:.14}
+.proj h3{font-size:23px;line-height:1.45}
+.proj p{margin:0;color:#C9D6EC;font-size:15px}
+.clients{display:flex;justify-content:center;gap:64px;margin-top:56px;font-family:var(--en);font-weight:600;font-size:20px;color:#9CA3AF;flex-wrap:wrap}
+
+/* facility */
+.fac{display:grid;grid-template-columns:5fr 7fr;gap:64px;align-items:center}
+.fac h2{font-size:clamp(28px,3vw,40px);margin:18px 0 22px}
+.fac p{margin:0 0 32px;color:#C9D6EC;font-size:17px}
+.spec{display:flex;gap:48px}
+.spec b{display:block;font-family:var(--en);font-size:30px;font-weight:600}
+.spec span{font-size:14px;color:#9FB0CC}
+.gal{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.gal figure{margin:0;position:relative}
+.gal figure{grid-column:span 2}
+.gal img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.gal figure:not(:first-child) img{aspect-ratio:16/9}
+.gal figcaption{position:absolute;left:0;bottom:0;padding:8px 14px;background:rgba(5,11,24,.8);font-size:13px}
+
+/* contact */
+.contact{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.contact a{padding:48px;display:flex;flex-direction:column;gap:12px;color:#fff;background:var(--navy);transition:transform .2s}
+.contact a:hover{transform:translateY(-4px)}
+.contact a+a{background:var(--blue)}
+.contact strong{font-size:28px}
+.contact span{color:#DCE7FA}
+.contact em{font-style:normal;margin-top:12px;font-weight:500}
+
+/* footer */
+.ft{background:var(--mist);padding:56px 0;color:var(--steel);font-size:14px;line-height:1.9}
+.ft .wrap{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.ft .logo{color:var(--navy);font-size:22px;display:block;margin-bottom:8px}
+.ft .r{text-align:right}
+.ft .r b{font-family:var(--en);color:var(--navy)}
+
+@media (max-width:960px){
+  .nav{display:none;position:fixed;inset:72px 0 auto 0;flex-direction:column;gap:0;background:var(--deep);padding:8px 24px 24px}
+  .nav.open{display:flex}
+  .nav a{padding:16px 0;border-bottom:1px solid #1B2A44}
+  .menu-btn{display:flex}
+  .hd{height:72px}
+  .sec{padding:80px 0}
+  .about,.fac,.biz,.prod,.contact{grid-template-columns:1fr}
+  .proj{grid-template-columns:1fr}
+  .flow{grid-template-columns:1fr;gap:24px;margin-top:64px}
+  .flow:before{left:32px;right:auto;top:0;bottom:0;width:1px;height:auto}
+  .flow div{display:grid;grid-template-columns:64px 1fr;column-gap:20px;row-gap:2px;align-items:center;text-align:left}
+  .flow b{grid-row:1/4;width:64px;height:64px;font-size:18px;margin:0}
+  .figs{grid-template-columns:repeat(2,1fr);row-gap:36px}
+  .figs div{padding:0 0 0 20px}
+  .figs div:nth-child(odd){border-left:0;padding-left:0}
+  .card{min-height:340px;padding:28px}
+  .card .ic{display:none}
+  .card h3{font-size:24px}
+  .scroll{display:none}
+  .ft .r{text-align:left}
+  .clients{gap:28px;font-size:17px}
+}
+</style>
+</head>
+<body>
+
+<header class="hd" id="hd">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="BVS 처음으로"><img src="img/bvs_logo_official_white.svg" alt="BVS" width="87" height="35"></a>
+    <nav class="nav" id="nav">
+      <a href="#company">COMPANY</a>
+      <a href="#business">BUSINESS</a>
+      <a href="#projects">PROJECTS</a>
+      <a href="#facility">FACILITY</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero" aria-label="BVS 소개">
+  <svg class="bg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fff" stop-opacity=".95"/><stop offset="35%" stop-color="#9CC3FF" stop-opacity=".55"/><stop offset="100%" stop-color="#1F5FD1" stop-opacity="0"/></radialGradient>
+      <radialGradient id="haze" cx="50%" cy="65%" r="60%"><stop offset="0%" stop-color="#123A7A" stop-opacity=".6"/><stop offset="100%" stop-color="#050B18" stop-opacity="0"/></radialGradient>
+    </defs>
+    <rect width="1440" height="900" fill="url(#haze)"/>
+    <g fill="none" stroke="#3B7BEA">
+      <ellipse cx="720" cy="690" rx="160" ry="38" stroke-opacity=".35"/>
+      <ellipse cx="720" cy="690" rx="260" ry="62" stroke-opacity=".3"/>
+      <ellipse cx="720" cy="690" rx="380" ry="92" stroke-opacity=".25"/>
+      <ellipse cx="720" cy="690" rx="520" ry="128" stroke-opacity=".2"/>
+      <ellipse cx="720" cy="690" rx="690" ry="170" stroke-opacity=".15"/>
+      <ellipse cx="720" cy="690" rx="880" ry="220" stroke-opacity=".1"/>
+    </g>
+    <g fill="none" stroke="#7DE3FF" stroke-width="2" stroke-linecap="round">
+      <path d="M460 698A260 62 0 0 1 620 630" stroke-opacity=".8"/>
+      <path d="M1060 730A380 92 0 0 1 900 780" stroke-opacity=".6"/>
+      <path d="M250 720A520 128 0 0 1 420 590" stroke-opacity=".5"/>
+      <path d="M1300 670A690 170 0 0 0 1180 550" stroke-opacity=".4"/>
+    </g>
+    <circle cx="720" cy="650" r="150" fill="url(#glow)"/>
+    <circle cx="720" cy="650" r="46" fill="#EAF2FF" fill-opacity=".9"/>
+    <circle cx="1180" cy="170" r="70" fill="url(#glow)" opacity=".35"/>
+    <circle cx="210" cy="260" r="50" fill="url(#glow)" opacity=".3"/>
+  </svg>
+  <div class="copy">
+    <span class="eyebrow">BVS · Build · Verify · Support</span>
+    <h1>Build. Verify.<br>Support.</h1>
+    <p>만들고, 검증하고, 끝까지 지원합니다<br>제작부터 이설, 셋업, 유지보수까지 반도체 FAB 설비의 전 과정을 한 팀이 책임집니다</p>
+  </div>
+  <div class="scroll" aria-hidden="true"><span>SCROLL DOWN</span><span></span></div>
+</section>
+
+<section class="sec" id="company">
+  <div class="wrap">
+    <div class="about">
+      <figure>
+        <img src="img/hq.jpg" alt="BVS 이천 사옥 외관" loading="lazy" width="1376" height="768">
+        <figcaption>이천 사옥 · 제조장</figcaption>
+      </figure>
+      <div>
+        <span class="eyebrow">About BVS</span>
+        <h2>설비의 시작부터 끝까지,<br>맡기는 곳은 한 곳이면 충분합니다</h2>
+        <p>BVS는 SK하이닉스 · 삼성의 반도체와 디스플레이 라인에서 설비를 만들고, 옮기고, 셋업하고, 가동 이후까지 관리합니다. 단계마다 업체가 바뀌지 않으니 일정과 책임이 흩어지지 않습니다.</p>
+        <a class="btn" href="#business">사업분야 보기 +</a>
+      </div>
+    </div>
+    <div class="flow">
+      <div><b>01</b><em>BUILD</em><strong>가공 · 제작</strong><span>설비 · 구조물 제작, 부품 가공</span></div>
+      <div><b>02</b><em>MOVE</em><strong>이설 · 리깅</strong><span>철거 · 반출 · 이송 · 반입</span></div>
+      <div><b>03</b><em>VERIFY</em><strong>설치 · 셋업</strong><span>반입 · 설치 · 정렬 · 티칭</span></div>
+      <div><b>04</b><em>SUPPORT</em><strong>유지보수 · CS</strong><span>예방점검 · 긴급 A/S</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="business" style="background:var(--mist)">
+  <div class="wrap">
+    <div class="sec-head"><h2>사업분야</h2><span class="bar"></span><p>Setup &amp; Service Partner for Semiconductor FAB</p></div>
+    <div class="biz">
+      <article class="card">
+        <svg class="ic" width="64" height="64" viewBox="0 0 48 48" fill="none" stroke="#9CC3FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 30h40M8 30v8M40 30v8M24 30v8"/><rect x="9" y="20" width="10" height="10"/><rect x="29" y="20" width="10" height="10"/><path d="M14 20V10h20v10"/></svg>
+        <span class="eyebrow">01 · Equipment &amp; Automation</span>
+        <h3>설비 제작 · 셋업</h3>
+        <p>반도체 장비와 물류자동화 설비를 제작하고, 클린룸 반입부터 설치 · 정렬 · 수평 · 티칭까지 현장 셋업을 수행합니다.</p>
+        <ul><li>에칭장비</li><li>레일 · STB</li><li>컨베이어</li><li>스토커</li><li>N2 배관 · 전장 결선</li></ul>
+      </article>
+      <article class="card c2">
+        <svg class="ic" width="64" height="64" viewBox="0 0 48 48" fill="none" stroke="#9CC3FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 36h36M10 36V20h14v16M24 26h10l6 6v4"/><circle cx="16" cy="40" r="3"/><circle cx="36" cy="40" r="3"/><path d="M14 20V10M8 10h12"/></svg>
+        <span class="eyebrow">02 · Rigging &amp; Relocation</span>
+        <h3>장비 이설 · 리깅</h3>
+        <p>노후 라인과 설비를 철거 · 반출하고, 새 위치에 재설치해 셋업과 시운전까지 지원합니다.</p>
+        <ul><li>철거 · 개보수</li><li>반출 · 이송</li><li>이설 셋업</li><li>시운전 지원</li></ul>
+      </article>
+      <article class="card c3">
+        <svg class="ic" width="64" height="64" viewBox="0 0 48 48" fill="none" stroke="#9CC3FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="14" height="14"/><path d="M12 12h6v6h-6zM26 15h14M26 10h10M26 20h10"/><path d="M8 32c6 0 6 8 12 8s6-8 12-8 6 8 8 8"/></svg>
+        <span class="eyebrow">03 · Components &amp; Fabrication</span>
+        <h3>부품 가공 · 제조</h3>
+        <p>알루미늄 프로파일과 하네스 케이블을 전문 파트너 사업장과 함께 가공 · 제조합니다. 사양 · 도면 관리와 입고 검사는 BVS가 맡습니다.</p>
+        <ul><li>알루미늄 프로파일</li><li>하네스 케이블</li><li>사양 · 입고 검사</li></ul>
+      </article>
+      <article class="card">
+        <svg class="ic" width="64" height="64" viewBox="0 0 48 48" fill="none" stroke="#9CC3FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M30 8a9 9 0 0 0-10 12L8 32a3 3 0 0 0 4 4l12-12a9 9 0 0 0 12-10l-5 5-4-1-1-4z"/></svg>
+        <span class="eyebrow">04 · Maintenance &amp; Service</span>
+        <h3>유지보수 · CS</h3>
+        <p>가동 중인 자동화 라인의 정기 예방점검과 긴급 수리, 소모품 교체까지 가동 이후를 책임집니다.</p>
+        <ul><li>정기 예방점검(PM)</li><li>긴급 A/S</li><li>소모품 교체</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="dark" style="padding:96px 0">
+  <div class="wrap figs">
+    <div><b>Global</b><span>국내 · 해외 FAB 셋업 수행</span></div>
+    <div><b>2023<i>~</i></b><span>SK하이닉스 · 삼성 FAB 수행</span></div>
+    <div><b>4<i> in 1</i></b><span>제작 · 이설 · 셋업 · 유지보수</span></div>
+    <div><b>Class<i> 1,000</i></b><span>자체 클린부스 보유</span></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">In-house Fabrication</span><h2>자사 제작 품목</h2><span class="bar"></span></div>
+    <div class="prod">
+      <div><h3>물류자동화 설비</h3><p>이천 제조장에서 제작 · 사전 조립 · 검사 후 현장에 반입합니다.</p>
+        <div class="tags"><span>레일</span><span>컨베이어</span><span>스토커</span><span>리프터</span><span>랙</span><span>STB</span></div></div>
+      <div><h3>구조물</h3><p>현장 규격에 맞춰 제작하고 설치까지 함께 진행합니다.</p>
+        <div class="tags"><span>클린부스</span><span>세이프티 부스</span><span>커버 프레임</span><span>안전 펜스</span><span>롤링타워</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="projects" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><h2>주요 프로젝트</h2><span class="bar"></span></div>
+    <div class="proj">
+      <article>
+        <svg width="220" height="220" viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="1" aria-hidden="true"><path d="M2 30h44M6 30v8M42 30v8M24 30v8"/><rect x="7" y="20" width="10" height="10"/><rect x="31" y="20" width="10" height="10"/></svg>
+        <span class="eyebrow">Overseas</span>
+        <h3>해외 반도체 FAB<br>물류자동화 컨베이어 셋업</h3>
+        <p>컨베이어 조립 · 설치 · 셋업</p>
+      </article>
+      <article>
+        <svg width="220" height="220" viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="1" aria-hidden="true"><rect x="10" y="6" width="28" height="36"/><path d="M10 16h28M10 26h28M10 36h28"/></svg>
+        <span class="eyebrow">Samsung</span>
+        <h3>삼성반도체 고덕 P4<br>삼성디스플레이 탕정</h3>
+        <p>물류자동화 레일 · STB · 배관 셋업 / 인덱스 철거 · 셋업 · 티칭</p>
+      </article>
+      <article>
+        <svg width="220" height="220" viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="1" aria-hidden="true"><rect x="12" y="12" width="24" height="24"/><rect x="18" y="18" width="12" height="12"/><path d="M18 12V4M24 12V4M30 12V4M18 36v8M24 36v8M30 36v8"/></svg>
+        <span class="eyebrow">SK hynix · 2024–2026</span>
+        <h3>SK하이닉스 M14 · M15 · M15X</h3>
+        <p>에칭장비 셋업 · 유지보수 / 물류자동화 컨베이어 조립 · 레일 · STB 셋업</p>
+      </article>
+    </div>
+    <div class="clients" aria-label="수행 고객사 라인"><span>SK hynix</span><span>SAMSUNG</span></div>
+  </div>
+</section>
+
+<section class="sec dark" id="facility">
+  <div class="wrap fac">
+    <div>
+      <span class="eyebrow">Facility</span>
+      <h2>이천 사업장</h2>
+      <p>1층 제조장과 클린부스에서 물류자동화 설비를 조립하고, 모듈을 사전 제작 · 검사한 뒤 현장에 반입합니다.</p>
+      <div class="spec">
+        <div><b>363㎡</b><span>1층 제조장</span></div>
+        <div><b>1,000</b><span>Clean Booth Class</span></div>
+      </div>
+    </div>
+    <div class="gal">
+      <figure><img src="img/cleanbooth.jpg" alt="1,000 Class 클린부스" width="1200" height="896"><figcaption>1,000 Class 클린부스</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="contact">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Contact</span><h2>문의</h2><span class="bar"></span></div>
+    <div class="contact">
+      <a href="mailto:bvs@briovistas.com?subject=%5B%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%AC%B8%EC%9D%98%5D">
+        <span class="eyebrow" style="color:var(--sky)">Project</span>
+        <strong>프로젝트 · 견적 문의</strong>
+        <span>제작 · 이설 · 셋업 일정과 사양을 알려 주세요.</span>
+        <em>문의하기 +</em>
+      </a>
+      <a href="mailto:bvs@briovistas.com?subject=%5B%EC%9C%A0%EC%A7%80%EB%B3%B4%EC%88%98%20%EC%A0%91%EC%88%98%5D">
+        <span class="eyebrow" style="color:#DCE7FA">Service</span>
+        <strong>유지보수 접수</strong>
+        <span>설비 이상 · 점검 요청을 접수합니다.</span>
+        <em>접수하기 +</em>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="ft">
+  <div class="wrap">
+    <div>
+      <span class="logo"><img src="img/bvs_logo_official.svg" alt="BVS" width="79" height="32"></span>
+      주식회사 비브이에스 · 대표이사 황병승 · 사업자등록번호 488-86-03026<br>
+      경기도 이천시 호법면 대덕산로 215<br>
+      TEL 010-5050-1070 · E-MAIL bvs@briovistas.com
+    </div>
+    <div class="r"><b>www.bvs.kr</b><br>© BVS Co., Ltd. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var hd=document.getElementById('hd'),nav=document.getElementById('nav'),btn=document.getElementById('menuBtn');
+  function onScroll(){hd.classList.toggle('solid',window.scrollY>40||nav.classList.contains('open'));}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  btn.addEventListener('click',function(){var o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o);btn.setAttribute('aria-label',o?'메뉴 닫기':'메뉴 열기');onScroll();});
+  nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');onScroll();}});
+})();
+</script>
+</body>
+</html>
